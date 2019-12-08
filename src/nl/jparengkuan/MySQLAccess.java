@@ -33,7 +33,7 @@ public class MySQLAccess {
 
         field = field.toUpperCase();
 
-        String query = "SELECT "+field+" AS VALUE FROM data WHERE STN = "+Stn+" LIMIT 1";
+        String query = "SELECT CONVERT(CONCAT(DATE, \" \", TIME), DATETIME) as DATE, "+field+" AS VALUE FROM DATA WHERE STN = "+Stn+" ORDER BY DATE DESC LIMIT 1";
 
 
         float value = 0;

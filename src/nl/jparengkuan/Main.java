@@ -7,7 +7,7 @@ public class Main {
 
         MySQLAccess database = MySQLAccess.getInstance();
 
-        MultiThreadedServer mtserver = new MultiThreadedServer(7789, 2);
+        MultiThreadedServer mtserver = new MultiThreadedServer(7789, 10);
         new Thread(mtserver).start();
 
     }
