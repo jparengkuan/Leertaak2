@@ -27,31 +27,41 @@ public class MySQLAccess {
         this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/unwdmi?user=root");
     }
 
-    public void extrapolation(String field, String Stn) {
+    public synchronized float extrapolation(String field, String Stn) {
 
-        System.out.println("field is " + field);
 
-        String query = "SELECT " + field.toUpperCase() + " FROM data WHERE STN = " + Stn + " ORDER BY DATE AND TIME LIMIT 30";
-        System.out.println(query);
+
+        field = field.toUpperCase();
+
+        String query = "SELECT "+field+" AS VALUE FROM data WHERE STN = "+Stn+" LIMIT 1";
+
+
+        float value = 0;
 
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(query)) {
+
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
 
+
             while(resultSet.next()) {
 
+               value = resultSet.getFloat("VALUE");
 
             }
+
+
 
         } catch (SQLException e) {
             System.out.println("SQLException: " + e.getMessage());
         }
 
+        return value;
 
     }
 
-    public void insertData(WeatherDataModel weatherDataModel){
+    public synchronized void insertData(WeatherDataModel weatherDataModel){
         String query = "INSERT INTO data (STN, DATE, TIME, TEMP, DEWP, STP, SLP, VISIB, WDSP, PRCP, SNDP, FRSHTT, CLDC, WNDDIR) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (PreparedStatement preparedStatement = this.connection.prepareStatement(query)) {
@@ -69,7 +79,7 @@ public class MySQLAccess {
             preparedStatement.setFloat(11, weatherDataModel.getSndp());
             preparedStatement.setInt(12, weatherDataModel.getFrshtt());
             preparedStatement.setFloat(13, weatherDataModel.getCldc());
-            preparedStatement.setInt(14, weatherDataModel.getWinddir());
+            preparedStatement.setFloat(14, weatherDataModel.getWinddir());
             preparedStatement.execute();
 
         } catch (SQLException e) {

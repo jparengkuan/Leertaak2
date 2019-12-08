@@ -17,7 +17,7 @@ public class WeatherDataModel {
     private Float sndp;
     private String frshtt;
     private Float cldc;
-    private int winddir;
+    private Float winddir;
 
 
     public int getStn() {
@@ -65,18 +65,19 @@ public class WeatherDataModel {
     }
 
     public int getFrshtt() {
-        return Integer.parseInt(frshtt);
+
+        return Integer.parseInt(frshtt.replace(".", ""));
     }
 
     public Float getCldc() {
         return cldc;
     }
 
-    public int getWinddir() {
+    public float getWinddir() {
         return winddir;
     }
 
-    public WeatherDataModel(String stn, String date, String time, Float temp, Float dewp, Float stp, Float slp, Float visib, Float wdsp, Float prcp, Float sndp, String frshtt, Float cldc, int winddir) {
+    public WeatherDataModel(String stn, String date, String time, Float temp, Float dewp, Float stp, Float slp, Float visib, Float wdsp, Float prcp, Float sndp, String frshtt, Float cldc, Float winddir) {
         this.setStn(stn);
         this.setDate(date);
         this.setTime(time);
@@ -145,7 +146,7 @@ public class WeatherDataModel {
         this.cldc = cldc;
     }
 
-    private void setWinddir(int winddir) {
+    private void setWinddir(float winddir) {
         this.winddir = winddir;
     }
 }

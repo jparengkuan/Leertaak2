@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class XMLParser {
 
-    public static synchronized HashMap<String, String> Parse(String data){
+    public static HashMap<String, String> Parse(String data){
 
         org.jdom2.input.SAXBuilder saxBuilder = new SAXBuilder();
 
