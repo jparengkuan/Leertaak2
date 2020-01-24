@@ -1,83 +1,82 @@
 package nl.jparengkuan;
 
-import java.sql.Time;
 
 public class WeatherDataModel {
 
     private String stn;
     private String date;
     private String time;
-    private Float temp;
-    private Float dewp;
-    private Float stp;
-    private Float slp;
-    private Float visib;
-    private Float wdsp;
-    private Float prcp;
-    private Float sndp;
+    private String temp;
+    private String dewp;
+    private String stp;
+    private String slp;
+    private String visib;
+    private String wdsp;
+    private String prcp;
+    private String sndp;
     private String frshtt;
-    private Float cldc;
-    private Float winddir;
+    private String cldc;
+    private String winddir;
 
 
-    public int getStn() {
-        return Integer.parseInt(stn);
+    public String getStn() {
+        return stn;
     }
 
-    public java.sql.Date getDate() {
-        return java.sql.Date.valueOf(date);
+    public String getDate() {
+        return date;
     }
 
-    public Time getTime() {
-        return Time.valueOf(time);
+    public String getTime() {
+        return time;
     }
 
-    public Float getTemp() {
+    public String getTemp() {
         return temp;
     }
 
-    public Float getDewp() {
+    public String getDewp() {
         return dewp;
     }
 
-    public Float getStp() {
+    public String getStp() {
         return stp;
     }
 
-    public Float getSlp() {
+    public String getSlp() {
         return slp;
     }
 
-    public Float getVisib() {
+    public String getVisib() {
         return visib;
     }
 
-    public Float getWdsp() {
+    public String getWdsp() {
         return wdsp;
     }
 
-    public Float getPrcp() {
+    public String getPrcp() {
         return prcp;
     }
 
-    public Float getSndp() {
+    public String getSndp() {
         return sndp;
     }
 
-    public int getFrshtt() {
+    public String getFrshtt() {
 
-        return Integer.parseInt(frshtt.replace(".", ""));
+        return frshtt;
     }
 
-    public Float getCldc() {
+    public String getCldc() {
         return cldc;
     }
 
-    public float getWinddir() {
+    public String getWinddir() {
         return winddir;
     }
 
-    public WeatherDataModel(String stn, String date, String time, Float temp, Float dewp, Float stp, Float slp, Float visib, Float wdsp, Float prcp, Float sndp, String frshtt, Float cldc, Float winddir) {
+    public WeatherDataModel(String stn, String date, String time, String temp, String dewp, String stp, String slp, String visib, String wdsp, String prcp, String sndp, String frshtt, String cldc, String winddir) {
         this.setStn(stn);
         this.setDate(date);
         this.setTime(time);
@@ -106,35 +105,35 @@ public class WeatherDataModel {
         this.time = time;
     }
 
-    private void setTemp(Float temp) {
+    private void setTemp(String temp) {
         this.temp = temp;
     }
 
-    private void setDewp(Float dewp) {
+    private void setDewp(String dewp) {
         this.dewp = dewp;
     }
 
-    private void setStp(Float stp) {
+    private void setStp(String stp) {
         this.stp = stp;
     }
 
-    private void setSlp(Float slp) {
+    private void setSlp(String slp) {
         this.slp = slp;
     }
 
-    private void setVisib(Float visib) {
+    private void setVisib(String visib) {
         this.visib = visib;
     }
 
-    private void setWdsp(Float wdsp) {
+    private void setWdsp(String wdsp) {
         this.wdsp = wdsp;
     }
 
-    private void setPrcp(Float prcp) {
+    private void setPrcp(String prcp) {
         this.prcp = prcp;
     }
 
-    private void setSndp(Float sndp) {
+    private void setSndp(String sndp) {
         this.sndp = sndp;
     }
 
@@ -142,11 +141,11 @@ public class WeatherDataModel {
         this.frshtt = frshtt;
     }
 
-    private void setCldc(Float cldc) {
+    private void setCldc(String cldc) {
         this.cldc = cldc;
     }
 
-    private void setWinddir(float winddir) {
+    private void setWinddir(String winddir) {
         this.winddir = winddir;
     }
 }
